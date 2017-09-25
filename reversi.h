@@ -25,6 +25,7 @@ namespace reversi {
   };
 
   inline bitboard pos2bitboard(int i,int j){ return bitboard(1)<<(i*board_w+j); }
+  inline bitboard idx2bitboard(int idx){ return bitboard(1)<<idx; }
   inline bool check_bit(int i,int j,bitboard b){ return bitboard(1)<<(i*board_w+j) & b; }
 
   void showbitboard(const bitboard &b);
@@ -98,6 +99,10 @@ namespace reversi {
       return (*this);
     }
 
+    bool operator==(const game &g)const{
+      return my_s_==g.my_s_&&your_s_==g.your_s_&&t_==g.t_&&pass_==g.pass_;
+    }
+
     void show()const;
 
     bitboard get_my_stone()const{ return my_s_; }
@@ -106,6 +111,8 @@ namespace reversi {
     int get_pass()const{ return pass_; }
     int get_my_stone_num()const{ return get_num(my_s_); }
     int get_your_stone_num()const{ return get_num(your_s_); }
+    int get_stone_num()const{ return get_num(my_s_|your_s_); }
+    bool win()const{ return get_my_stone_num() > get_your_stone_num() ; }
 
     bool isfinish()const{
       return (pass_==2)||(!((my_s_|your_s_)+1));
@@ -153,12 +160,10 @@ namespace reversi {
 
     void calc_valid_moves(){
       validmoves_ = 0;
-      for(int i=0;i<board_h;++i){
-        for(int j=0;j<board_w;++j){
-          bitboard m = pos2bitboard(i,j);
-          if(set_stone(my_s_,your_s_,m))
-            validmoves_ |= m;
-        }
+      for(int i=0;i<board_size;++i){
+        bitboard m = idx2bitboard(i);
+        if(set_stone(my_s_,your_s_,m))
+          validmoves_ |= m;
       }
     }
 
@@ -179,10 +184,12 @@ namespace reversi {
   };
 
   class human{
+    std::string name_;
     public:
-      human(const human &h){}
-      human(){}
-      void operator()(game &g)const;
+    human(const human &h){}
+    human(std::string name="human"):name_(name){}
+    void operator()(game &g)const;
+    std::string get_name()const{ return name_; } 
   };
 
   template<typename P1,typename P2> 
@@ -203,6 +210,22 @@ namespace reversi {
         }
       }
       g.show();
+
+      if(g.get_my_stone_num()>g.get_your_stone_num()){
+        if(g.turn()==t){
+          std::cout << player.first.get_name() << " win" << std::endl;
+        }else{
+          std::cout << player.second.get_name() << " win" << std::endl;
+        }
+      }else if(g.get_my_stone_num()<g.get_your_stone_num()){
+        if(g.turn()==t){
+          std::cout << player.second.get_name() << " win" << std::endl;
+        }else{
+          std::cout << player.first.get_name() << " win" << std::endl;
+        }
+      }else{
+        std::cout << "draw" << std::endl;
+      }
     }
   };
 
