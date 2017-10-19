@@ -47,6 +47,7 @@ namespace reversi{
           move_result mr = exhaustive(g);
           if(!mr.second){
             std::cout << "surrender" << std::endl;
+            std::cout << "name:" << name_ << std::endl;
             std::abort();
           }
 
@@ -69,21 +70,20 @@ namespace reversi{
         score -= check_bit(i,j,your_s) * evaltable_[i*board_w+j];
       }
     }
-    score += 20*get_num(g.get_valid_moves());
+    score += 5*get_num(g.get_valid_moves());
     return score;
   }
 
   reversi_ai::move_score reversi_ai::alpha_beta(game &g,int alpha,int beta,int depth){
-    move_score best_ms(0,-1000000);
-    bitboard validmoves = g.get_valid_moves();
-
+    
     if( depth == 0 ){
       int score = eval(g);
+      transposition_table_[std::make_pair(g.get_my_stone(),g.get_your_stone())] = score;
       return move_score(0,score);
     }
 
     if(g.isfinish()){
-      if(g.get_my_stone_num() > g.get_your_stone_num()){
+      if(g.get_my_stone_num() >= g.get_your_stone_num()){
         return move_score(0,10000000);
       }else{
         return move_score(0,-10000000);
@@ -98,11 +98,19 @@ namespace reversi{
       return ms;
     }
 
+    bitboard validmoves = g.get_valid_moves();
+    move_score best_ms(0,-1000000);
     for(int i=0;i<board_size;++i){
       bitboard m = idx2bitboard(i);
       if(!(m&validmoves)) continue;
       bitboard rev = g.set(m);
-      move_score ms = alpha_beta(g,-beta,-alpha,depth-1);
+      move_score ms;
+      auto it = transposition_table_.find(std::make_pair(g.get_my_stone(),g.get_your_stone()));
+      if(it!=transposition_table_.end()){
+        ms = move_score(0,it->second);
+      }else{
+        ms = alpha_beta(g,-beta,-alpha,depth-1);
+      }
       g.undo(m,rev);
       if(best_ms.first==0||-ms.second>best_ms.second){
         alpha = -ms.second;
@@ -130,7 +138,7 @@ namespace reversi{
     if(g.check_pass()){
       int pass_num = g.get_pass();
       g.pass();
-      auto ms = alpha_beta(g,-beta,-alpha,depth-1);
+      auto ms = negascout(g,-beta,-alpha,depth-1);
       g.undo(0,0,pass_num);
       return ms;
     }
@@ -138,7 +146,7 @@ namespace reversi{
     bitboard validmoves = g.get_valid_moves();
 
     move_score best_ms(0,alpha);
-    double b = beta;
+    int b = beta;
     bool not_eldest = false;
     for(int i=0;i<board_size;++i){
       bitboard m = idx2bitboard(i);
@@ -146,22 +154,23 @@ namespace reversi{
 
       bitboard rev = g.set(m);
       move_score ms = negascout(g,-b,-best_ms.second,depth-1);
+      ms.second *= -1;
       g.undo(m,rev);
-
-      if(-ms.second>best_ms.second&&-ms.second<beta&&depth>1&&not_eldest){
+  
+      if(best_ms.first==0) best_ms.first = m;
+      if(ms.second>best_ms.second&&ms.second<beta&&depth>1&&not_eldest){
         g.set(m);
         best_ms = negascout(g,-beta,-ms.second,depth-1);
+        best_ms.second *= -1;
         g.undo(m,rev);
       }
 
-      if(-ms.second>-best_ms.second){
-        best_ms = move_score(m,ms.second);
-      }else{
+      if(ms.second>best_ms.second){
         best_ms = move_score(m,ms.second);
       }
       
-      if(-best_ms.second >= beta) return best_ms;
-      b = -best_ms.second+1;
+      if(best_ms.second >= beta) return best_ms;
+      b = best_ms.second+1;
       not_eldest = true;
     }
     return best_ms;

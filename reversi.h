@@ -1,6 +1,7 @@
 #ifndef REVERSI_H
 #define REVERSI_H
 #include <random>
+#include <chrono>
 #include <iostream>
 
 namespace reversi {
@@ -87,14 +88,15 @@ namespace reversi {
     game(const bitboard &ms,const bitboard &ys){
       my_s_ = ms ;
       your_s_ = ys;
-      t_=0;pass_=0;
+      t_=0;
+      pass_=0;
     }
 
     game& operator=(const game &g){
+      t_ = g.t_;
       my_s_ = g.my_s_;
       your_s_ = g.your_s_;
       validmoves_ = g.validmoves_;
-      t_ = g.t_;
       pass_ = g.pass_;
       return (*this);
     }
@@ -115,7 +117,7 @@ namespace reversi {
     bool win()const{ return get_my_stone_num() > get_your_stone_num() ; }
 
     bool isfinish()const{
-      return (pass_==2)||(!((my_s_|your_s_)+1));
+      return (!my_s_)||(!your_s_)||(pass_==2)||(!((my_s_|your_s_)+1));
     }
 
     int turn()const{ return t_; }
@@ -203,28 +205,30 @@ namespace reversi {
     void run(){
       while(!g.isfinish()){
         g.show();
+        auto start = std::chrono::system_clock::now();
         if(g.turn()==t){
           player.first(g);
         }else{
           player.second(g);
         }
+        auto end = std::chrono::system_clock::now();
+        int ms = std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count();
+        int s = ms/1000;
+        ms %= 1000;
+        int m = s/60;
+        s %= 60;
+        std::cout << m << "min " << s << "sec " << ms << "ms" << std::endl;
       }
       g.show();
-
-      if(g.get_my_stone_num()>g.get_your_stone_num()){
-        if(g.turn()==t){
-          std::cout << player.first.get_name() << " win" << std::endl;
-        }else{
-          std::cout << player.second.get_name() << " win" << std::endl;
-        }
-      }else if(g.get_my_stone_num()<g.get_your_stone_num()){
-        if(g.turn()==t){
-          std::cout << player.second.get_name() << " win" << std::endl;
-        }else{
-          std::cout << player.first.get_name() << " win" << std::endl;
-        }
-      }else{
+      int my_stone_num = g.get_my_stone_num();
+      int your_stone_num = g.get_your_stone_num();
+      if(my_stone_num == your_stone_num){
         std::cout << "draw" << std::endl;
+      }else{
+        std::string winner = my_stone_num > your_stone_num ? player.first.get_name() : player.second.get_name();
+        std::string loser  = my_stone_num < your_stone_num ? player.first.get_name() : player.second.get_name();
+        if(g.turn()!=t) std::swap(winner,loser);
+        std::cout << winner << " win!" << std::endl;
       }
     }
   };

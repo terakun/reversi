@@ -1,6 +1,7 @@
 #include <iostream>
 #include "./reversi.h"
 #include "./reversi_ai.h"
+#include "./mcts.h"
 
 int main(){
   using namespace reversi;
@@ -12,11 +13,12 @@ int main(){
   }
   int turn = (c=='w');
 
-  // reversi_ai ai1(turn,reversi_ai::ALPHA_BETA,"./eval.dat",7,-1,"alphabeta 4");
-  reversi_ai ai2(1-turn,reversi_ai::ALPHA_BETA,"./eval.dat",10,20,"alphabeta 8 exhaustive");
+  reversi_ai alphabeta(turn,reversi_ai::ALPHA_BETA,"./eval.dat",9,20,"alphabeta 9 exhaustive");
+  mcts m(1-turn,100);
   human h;
   // play<reversi_ai,reversi_ai> p(ai1,ai2,turn);
-  play<human,reversi_ai> p(h,ai2,turn);
+  // play<human,reversi_ai> p(h,alphabeta,turn);
+  play<reversi_ai,mcts> p(alphabeta,m,turn);
   
   p.run();
 

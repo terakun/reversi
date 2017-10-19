@@ -2,7 +2,7 @@
 #define REVERSI_AI_H
 #include <utility>
 #include <array>
-#include <unordered_map>
+#include <map>
 #include "./reversi.h"
 
 namespace reversi{
@@ -14,7 +14,7 @@ namespace reversi{
     int exhaustive_threshold_;
     int t_;
     std::array<int,board_w*board_h> evaltable_;
-    // std::unordered_map<game,int> transposition_table_;
+    std::map<std::pair<bitboard,bitboard>,int> transposition_table_;
 
     int eval(const game &);
     std::string name_;
