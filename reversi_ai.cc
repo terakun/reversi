@@ -3,19 +3,24 @@
 
 namespace reversi{
 
-  reversi_ai::reversi_ai(int t,option o,const std::string &evalfile,int max_depth,int exhaustive_threshold,std::string name):mt_(std::random_device()()),t_(t),opt_(o),max_depth_(max_depth),exhaustive_threshold_(exhaustive_threshold),name_(name){
+  reversi_ai::reversi_ai(int t,option o,const std::string &evalfile,int max_depth,int exhaustive_threshold,std::string name):mt_(std::random_device()()),t_(t),opt_(o),max_depth_(max_depth),exhaustive_threshold_(exhaustive_threshold),name_(name),exist_solution(true){
     std::ifstream ifs(evalfile);
     for(int i=0;i<board_size;++i){
       ifs >> evaltable_[i];
     }
   }
 
+  reversi_ai::reversi_ai(int t,option o,int max_trial,int exhaustive_threshold,std::string name):mt_(std::random_device()()),t_(t),opt_(o),m_(t,max_trial),max_depth_(0),exhaustive_threshold_(exhaustive_threshold),name_(name),exist_solution(true){
+  }
+
+
   void reversi_ai::operator()(game &g){
     if(g.check_pass()){
       g.pass();
       return;
     }
-    if( board_size - g.get_stone_num() < exhaustive_threshold_ ){
+    if( board_size - g.get_stone_num() < exhaustive_threshold_ && exist_solution ){
+      pre_opt_ = opt_;
       opt_ = EXHAUSTIVE;
     }
 
@@ -46,14 +51,17 @@ namespace reversi{
         {
           move_result mr = exhaustive(g);
           if(!mr.second){
-            std::cout << "surrender" << std::endl;
-            std::cout << "name:" << name_ << std::endl;
-            std::abort();
+            exist_solution = false;
+            opt_ = pre_opt_;
+            break;
           }
 
           g.set(mr.first);
           break;
         }
+      case MCTS:
+        m_(g);
+        break;
       case RANDOM:
         random(g);
         break;
@@ -78,7 +86,7 @@ namespace reversi{
     
     if( depth == 0 ){
       int score = eval(g);
-      transposition_table_[std::make_pair(g.get_my_stone(),g.get_your_stone())] = score;
+      // transposition_table_[std::make_pair(g.get_my_stone(),g.get_your_stone())] = score;
       return move_score(0,score);
     }
 
@@ -105,12 +113,12 @@ namespace reversi{
       if(!(m&validmoves)) continue;
       bitboard rev = g.set(m);
       move_score ms;
-      auto it = transposition_table_.find(std::make_pair(g.get_my_stone(),g.get_your_stone()));
-      if(it!=transposition_table_.end()){
-        ms = move_score(0,it->second);
-      }else{
+      // auto it = transposition_table_.find(std::make_pair(g.get_my_stone(),g.get_your_stone()));
+      // if(it!=transposition_table_.end()){
+        // ms = move_score(0,it->second);
+      // }else{
         ms = alpha_beta(g,-beta,-alpha,depth-1);
-      }
+      // }
       g.undo(m,rev);
       if(best_ms.first==0||-ms.second>best_ms.second){
         alpha = -ms.second;

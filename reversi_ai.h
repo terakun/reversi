@@ -4,6 +4,7 @@
 #include <array>
 #include <map>
 #include "./reversi.h"
+#include "./mcts.h"
 
 namespace reversi{
   class reversi_ai{
@@ -16,15 +17,20 @@ namespace reversi{
     std::array<int,board_w*board_h> evaltable_;
     std::map<std::pair<bitboard,bitboard>,int> transposition_table_;
 
+    bool exist_solution;
+
     int eval(const game &);
     std::string name_;
+
+    mcts m_;
     public: 
 
     enum option{
-      ALPHA_BETA,NEGASCOUT,EXHAUSTIVE,RANDOM
-    }opt_;
+      ALPHA_BETA,NEGASCOUT,EXHAUSTIVE,MCTS,RANDOM
+    }opt_,pre_opt_;
 
     reversi_ai(int t,option o,const std::string &evalfile,int max_depth,int exhaustive_threshold,std::string name="AI");
+    reversi_ai(int t,option o,int max_trial,int exhaustive_threshold,std::string name="AI");
 
     void operator()(game &);
     move_score alpha_beta(game &,int alpha,int beta,int depth);

@@ -1,25 +1,19 @@
 #include <iostream>
 #include "./reversi.h"
 #include "./reversi_ai.h"
-#include "./mcts.h"
 
-int main(){
+int main(int argc,char **argv){
   using namespace reversi;
-  char c;
-  for(;;){
-    std::cout<<"select black(b) or white(w):";
-    std::cin>>c;
-    if(c=='b'||c=='w') break;
+  if( argc < 2 ){
+    std::cout<<argv[0] << " " << "[w or b]" << std::endl;
+    return -1;
   }
-  int turn = (c=='w');
+  int turn = (argv[1][0]=='w');
 
-  reversi_ai alphabeta(turn,reversi_ai::ALPHA_BETA,"./eval.dat",9,20,"alphabeta 9 exhaustive");
-  mcts m(1-turn,100);
-  human h;
-  // play<reversi_ai,reversi_ai> p(ai1,ai2,turn);
-  // play<human,reversi_ai> p(h,alphabeta,turn);
-  play<reversi_ai,mcts> p(alphabeta,m,turn);
-  
+  std::string evalfile = "./eval.dat";
+  reversi_ai alphabeta(turn,reversi_ai::ALPHA_BETA,evalfile,9,22,"alphabeta 9 exhaustive 22");
+  reversi_ai alphabeta2(1-turn,reversi_ai::ALPHA_BETA,evalfile,6,20,"alphabeta 6 exhaustive 20");
+  play<reversi_ai,reversi_ai> p(alphabeta,alphabeta2,turn);
   p.run();
 
   return 0;

@@ -1,0 +1,602 @@
+  01234567
+0:        
+1:        
+2:   .    
+3:  .o*   
+4:   *o.  
+5:    .   
+6:        
+7:        
+my stone(*):2
+your stone(o):2
+0min 0sec 148ms
+  01234567
+0:        
+1:        
+2:  .*.   
+3:   **   
+4:  .*o   
+5:        
+6:        
+7:        
+my stone(o):1
+your stone(*):4
+1066 1988
+751 1435
+264 577
+0min 0sec 457ms
+  01234567
+0:        
+1:        
+2:   *    
+3:   **   
+4:  ooo   
+5: .....  
+6:        
+7:        
+my stone(*):3
+your stone(o):3
+0min 0sec 417ms
+  01234567
+0:        
+1:   .    
+2:   *..  
+3:   **   
+4:  oo*.  
+5:    *   
+6:     .  
+7:        
+my stone(o):2
+your stone(*):5
+301 602
+305 609
+631 1155
+327 647
+530 987
+0min 0sec 462ms
+  01234567
+0:        
+1:        
+2:   *    
+3:   **   
+4: .oo*   
+5: ...o   
+6:    .o  
+7:        
+my stone(*):4
+your stone(o):4
+0min 0sec 742ms
+  01234567
+0:        
+1:   .    
+2:   *..  
+3:   **   
+4:  oo*.  
+5:    *   
+6:   .*o  
+7:        
+my stone(o):3
+your stone(*):6
+347 645
+342 637
+723 1239
+444 801
+367 678
+0min 0sec 460ms
+  01234567
+0:        
+1:        
+2:   *    
+3:  .**   
+4: .oo*   
+5: ...*   
+6:   ooo  
+7:  . . . 
+my stone(*):5
+your stone(o):5
+0min 0sec 892ms
+  01234567
+0:        
+1:        
+2: ..*.   
+3:  ***   
+4:  o**.  
+5:    *   
+6:   ooo  
+7:        
+my stone(o):4
+your stone(*):7
+495 919
+611 1110
+535 978
+540 993
+0min 0sec 421ms
+  01234567
+0:        
+1:        
+2:   *    
+3:  ***   
+4:  oooo  
+5: ...o.. 
+6:   ooo  
+7:    . . 
+my stone(*):4
+your stone(o):8
+0min 3sec 759ms
+  01234567
+0:        
+1:  ..    
+2: ..*..  
+3:  ***   
+4: .*ooo  
+5: *  o   
+6:   ooo  
+7:        
+my stone(o):7
+your stone(*):6
+212 426
+363 675
+222 442
+381 704
+388 715
+276 533
+259 505
+0min 0sec 437ms
+  01234567
+0:        
+1:        
+2:   *    
+3: .***   
+4: ooooo  
+5:.*..o.. 
+6:   ooo  
+7:    . . 
+my stone(*):5
+your stone(o):9
+0min 4sec 726ms
+  01234567
+0:        
+1:  . .   
+2: ..*.   
+3:  ***   
+4: o**oo  
+5: ** o   
+6: . ooo  
+7:        
+my stone(o):7
+your stone(*):8
+464 876
+410 785
+300 599
+358 697
+206 436
+305 607
+0min 0sec 434ms
+  01234567
+0:        
+1:        
+2:   *    
+3:. ***   
+4:.o**oo. 
+5:.o* o.. 
+6:.o ooo  
+7:.   . . 
+my stone(*):7
+your stone(o):9
+0min 9sec 466ms
+  01234567
+0:        
+1:  . .   
+2: ..*.   
+3:  ***   
+4: o**oo  
+5: o*.o   
+6: * ooo  
+7:*.      
+my stone(o):8
+your stone(*):9
+291 781
+125 398
+193 558
+265 723
+155 470
+218 616
+151 454
+0min 0sec 353ms
+  01234567
+0:        
+1:        
+2:   *    
+3:. ***   
+4:.o**oo. 
+5:.o* o.. 
+6:.o ooo  
+7:*o. . . 
+my stone(*):8
+your stone(o):10
+0min 8sec 959ms
+  01234567
+0:        
+1:  .     
+2: ..*..  
+3:..***   
+4:.***oo  
+5:*** o   
+6: o ooo  
+7:*o      
+my stone(o):8
+your stone(*):11
+218 608
+252 687
+122 387
+140 430
+250 682
+168 495
+100 334
+118 377
+0min 0sec 355ms
+  01234567
+0:        
+1:        
+2:   *    
+3:..***   
+4:oooooo  
+5:***.o.. 
+6: o ooo  
+7:*o. . . 
+my stone(*):8
+your stone(o):12
+0min 5sec 173ms
+  01234567
+0:        
+1:  ...   
+2: ..*..  
+3:  ***   
+4:ooo*oo  
+5:****o   
+6:.o.ooo  
+7:*o      
+my stone(o):11
+your stone(*):10
+130 425
+96 340
+132 429
+139 447
+157 491
+229 663
+212 623
+84 309
+70 273
+0min 0sec 384ms
+  01234567
+0:        
+1:        
+2:   *    
+3:. ***   
+4:ooo*oo. 
+5:*oooo.. 
+6:.ooooo  
+7:*o... . 
+my stone(*):7
+your stone(o):15
+0min 2sec 562ms
+  01234567
+0:        
+1:  ...   
+2: ..*..  
+3:* ***   
+4:*oo*oo  
+5:*oooo   
+6: ooooo  
+7:*o      
+my stone(o):14
+your stone(*):9
+188 574
+152 483
+236 689
+182 559
+257 739
+164 515
+134 441
+0min 0sec 273ms
+  01234567
+0:        
+1:      . 
+2:   * o  
+3:* **o.  
+4:*ooooo. 
+5:*oooo.. 
+6:.ooooo  
+7:*o... . 
+my stone(*):7
+your stone(o):17
+0min 2sec 889ms
+  01234567
+0:        
+1:  ...   
+2: ..* o  
+3:*.**o   
+4:*o*ooo  
+5:**ooo   
+6:*ooooo  
+7:*o      
+my stone(o):15
+your stone(*):10
+217 889
+232 937
+103 513
+131 608
+157 692
+60 361
+0min 0sec 288ms
+  01234567
+0:        
+1:      . 
+2: ..*.o  
+3:*oooo.  
+4:*ooooo. 
+5:**ooo.. 
+6:*ooooo. 
+7:*o...   
+my stone(*):7
+your stone(o):19
+0min 1sec 412ms
+  01234567
+0:        
+1:  ...   
+2:  .**o  
+3:*oo*o   
+4:*o*ooo  
+5:**ooo   
+6:*ooooo  
+7:*o      
+my stone(o):17
+your stone(*):10
+194 964
+220 1065
+235 1121
+163 850
+0min 0sec 262ms
+  01234567
+0:        
+1:  ..... 
+2:..oooo  
+3:*oooo.  
+4:*o*ooo. 
+5:**ooo.  
+6:*ooooo. 
+7:*o....  
+my stone(*):7
+your stone(o):21
+0min 1sec 316ms
+  01234567
+0:        
+1:        
+2:*.oooo  
+3:**ooo   
+4:*o*ooo  
+5:**ooo   
+6:*ooooo  
+7:*o      
+my stone(o):20
+your stone(*):9
+786 4000
+0min 0sec 275ms
+  01234567
+0:        
+1: ...... 
+2:*ooooo. 
+3:*oooo.  
+4:*o*ooo. 
+5:**ooo.  
+6:*ooooo. 
+7:*o....  
+my stone(*):8
+your stone(o):22
+0min 1sec 299ms
+  01234567
+0:        
+1:        
+2:*ooooo  
+3:*oooo   
+4:*o*ooo. 
+5:******  
+6:*ooooo. 
+7:*o      
+my stone(o):19
+your stone(*):12
+362 1681
+536 2319
+0min 0sec 212ms
+  01234567
+0:        
+1:....... 
+2:*ooooo. 
+3:*oooo.. 
+4:*o*ooo. 
+5:*****o. 
+6:*oooooo.
+7:*o..... 
+my stone(*):11
+your stone(o):21
+0min 1sec 351ms
+  01234567
+0:        
+1:        
+2:*ooooo  
+3:*oooo   
+4:*o*ooo..
+5:******* 
+6:*oooooo.
+7:*o      
+my stone(o):20
+your stone(*):13
+326 1592
+291 1454
+167 954
+0min 0sec 182ms
+  01234567
+0:        
+1:....... 
+2:*ooooo. 
+3:*oooo.. 
+4:*o*ooo. 
+5:******o.
+6:*ooooooo
+7:*o......
+my stone(*):12
+your stone(o):22
+0min 1sec 913ms
+  01234567
+0:        
+1:        
+2:*ooooo  
+3:*oooo   
+4:*o*ooo. 
+5:******o 
+6:*ooooo*o
+7:*o    .*
+my stone(o):21
+your stone(*):14
+215 1948
+233 2052
+0min 0sec 174ms
+  01234567
+0:        
+1:....... 
+2:*ooooo. 
+3:*oooo.. 
+4:*o*ooo. 
+5:******o.
+6:*ooooooo
+7:*o....o*
+my stone(*):13
+your stone(o):23
+0min 1sec 727ms
+  01234567
+0:     .  
+1:    .*  
+2:*ooo*o  
+3:*oo*o   
+4:*o*ooo. 
+5:******o 
+6:*ooooooo
+7:*o    o*
+my stone(o):21
+your stone(*):16
+233 1829
+114 1126
+101 1045
+0min 0sec 139ms
+  01234567
+0:        
+1:.....*. 
+2:*ooo*o. 
+3:*oo*o.. 
+4:*o*oooo.
+5:*****oo.
+6:*ooooooo
+7:*o....o*
+my stone(*):15
+your stone(o):23
+0min 1sec 476ms
+  01234567
+0:   ...  
+1:  ..**  
+2:*oo**o  
+3:*o**o   
+4:***oooo 
+5:*****oo 
+6:*ooooooo
+7:*o    o*
+my stone(o):20
+your stone(*):19
+47 579
+41 543
+201 1415
+83 789
+63 674
+0min 0sec 214ms
+  01234567
+0:  ...   
+1:...o**. 
+2:*ooo*o. 
+3:*o*oo.. 
+4:***oooo.
+5:*****oo.
+6:*ooooooo
+7:*o....o*
+my stone(*):17
+your stone(o):23
+0min 0sec 441ms
+  01234567
+0:  *.... 
+1:   ***  
+2:*ooo*o  
+3:*o*oo   
+4:***oooo 
+5:*****oo 
+6:*ooooooo
+7:*o    o*
+my stone(o):22
+your stone(*):19
+74 813
+87 893
+157 1300
+104 994
+0min 0sec 108ms
+  01234567
+0:  *   o 
+1:...**o. 
+2:*ooooo. 
+3:*o*oo.. 
+4:***oooo.
+5:*****oo.
+6:*ooooooo
+7:*o....o*
+my stone(*):17
+your stone(o):25
+0min 0sec 336ms
+  01234567
+0:  *...o 
+1:  .**o  
+2:*ooo*o. 
+3:*o****. 
+4:***o*oo 
+5:*****oo 
+6:*ooooooo
+7:*o    o*
+my stone(o):21
+your stone(*):22
+65 681
+34 495
+75 738
+76 743
+98 866
+31 477
+0min 0sec 100ms
+  01234567
+0:  *   o 
+1:...**o. 
+2:*ooo*o..
+3:*oooooo.
+4:***o*oo.
+5:*****oo.
+6:*ooooooo
+7:*o....o*
+my stone(*):18
+your stone(o):26
+0min 0sec 185ms
+  01234567
+0: .*...o 
+1:..***o  
+2:***o*o  
+3:*o*oooo 
+4:***o*oo 
+5:*****oo 
+6:*ooooooo
+7:*o    o*
+my stone(o):23
+your stone(*):22
+surrender
+name:monte carlo tree search 4000 exhaustive 20

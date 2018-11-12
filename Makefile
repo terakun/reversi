@@ -1,7 +1,5 @@
 CXX = g++
-# CXX = icpc
-FLAGS = -std=c++11 -O3 -march=native
-# FLAGS = -std=c++11 -O0 -g
+FLAGS = -std=c++17 -Ofast -march=native
 INCLUDES = 
 LIBS = 
 TARGET = main
