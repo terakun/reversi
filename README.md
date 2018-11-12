@@ -1,4 +1,2 @@
 ReversiAI
 =========
-
-AI of Reversi.
