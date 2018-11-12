@@ -1,5 +1,5 @@
 CXX = g++
-FLAGS = -std=c++17 -Ofast -march=native
+FLAGS = -std=c++1z -Ofast -march=native
 INCLUDES = 
 LIBS = 
 TARGET = main
